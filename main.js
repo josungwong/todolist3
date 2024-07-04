@@ -16,7 +16,14 @@ let list = []
 let underLine = document.getElementById("under-line")
 let allD = document.getElementById("allD")
 
+tabs.forEach((menu) => 
+    menu.addEventListener("click", (e) => underLineMove(e)))
 
+function underLineMove(e){
+    underLine.style.left = e.currentTarget.offsetLeft + "px"
+    underLine.style.width = e.currentTarget.offsetWidth + "px"
+    underLine.style.top = e.currentTarget.offsetTop + e.currentTarget.offsetHeight +  (-1) +"px"
+}
 
 allD.addEventListener("click",AD)
 taskInput,addEventListener("keypress",function(event){
@@ -63,18 +70,18 @@ function render(){
     for(let i = 0; i<list.length; i++){
         if(list[i].isComplete == true){
             resultHTML +=`<div class="task color bor">
-                    <div class="task-done">${list[i].taskContent}</div>
+                    <div class="task-done text-size">${list[i].taskContent}</div>
                     <div>
-                        <button onclick="toggleComplete('${list[i].id}')" class="CK button">◆</button>
-                        <button onclick="deleteTask('${list[i].id}')" class="DL button">■</button>
+                        <button onclick="toggleComplete('${list[i].id}')" class="CK button"><img src="/img/re.png" alt="re"></button>
+                        <button onclick="deleteTask('${list[i].id}')" class="DL button"><img src="/img/can.png" alt="can"></button>
                     </div>
                 </div>`
         } else{
         resultHTML += `<div class="task bor">
-                    <div>${list[i].taskContent}</div>
+                    <div class="text-size">${list[i].taskContent}</div>
                     <div>
-                        <button onclick="toggleComplete('${list[i].id}')" class="CKD button">◇</button>
-                        <button onclick="deleteTask('${list[i].id}')" class="DL button">■</button>
+                        <button onclick="toggleComplete('${list[i].id}')" class="CKD button"><img src="/img/check.png" alt="check"></button>
+                        <button onclick="deleteTask('${list[i].id}')" class="DL button"><img src="/img/can.png" alt="can"></button>
                     </div>
                 </div>`
                 }
@@ -116,8 +123,6 @@ function filter(event){
     }
     if(mode == "all"){
         render()
-        underLine.style.left = 0
-        underLine.style.width = 64 + "px"
     } else if(mode == "ongoing"){
         for(let i =0; i <taskList.length;i++){
             if(taskList[i].isComplete === false){
@@ -125,8 +130,6 @@ function filter(event){
             }
         }
         render()
-        underLine.style.left = 4 + "em"
-        underLine.style.width = 80 + "px"
     } else if(mode == "done"){
         for(let i =0; i <taskList.length;i++){
             if(taskList[i].isComplete === true){
@@ -134,8 +137,6 @@ function filter(event){
             }
         }
         render()
-        underLine.style.left = 9 + "em"
-        underLine.style.width = 64 + "px"
     }
 }
 function AD(){

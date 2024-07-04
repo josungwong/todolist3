@@ -62,7 +62,10 @@ body{
     transform: scale(1.1);
     transition: 0.3s;
 }
-
+.button img{
+    width: 30px;
+    height: 30px;
+}
 .button{
     margin-left: 0.5em;
     border: none;
@@ -87,8 +90,26 @@ body{
     background-color: red;
 }
 #all:hover, #ongoing:hover, #done:hover{
-    background-color: #eee;
+    background-color: #aaa;
 }
 .bor{
     border: 1px solid #c6c6c6;
+}
+@media screen and (max-width: 72rem) {
+    .container{
+        background-color: #fff;
+        min-height: 100vh;
+        max-width: 60vw;
+    }
+    .button img{
+        width: 4vw;
+        height: 4vw;
+    }
+    .task-tabs div{
+        font-size: 120%;
+    }
+    .text-size{
+        font-size: 120%;
+    }
+    
 }
