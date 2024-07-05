@@ -141,5 +141,5 @@ function filter(event){
 }
 function AD(){
     taskList = []
-    render()
+    filter()
 }
