@@ -16,10 +16,29 @@ let list = []
 let underLine = document.getElementById("under-line")
 let allD = document.getElementById("allD")
 
-tabs.forEach((menu) => 
-    menu.addEventListener("click", (e) => underLineMove(e)))
 
+
+window.addEventListener(`resize`, function(){
+    if(mode == "all"){
+        underLineMovements(1)
+    } else if(mode == "ongoing"){
+        underLineMovements(2)
+    } else if(mode == "done"){
+        underLineMovements(3)
+    }
+});
+
+function underLineMovements(i){
+        underLine.style.left = tabs[i].offsetLeft + "px"
+        underLine.style.width = tabs[i].offsetWidth + "px"
+        underLine.style.top = tabs[i].offsetTop + tabs[i].offsetHeight +  (-1) +"px"
+}
+
+tabs.forEach((menu) => 
+    menu.addEventListener("click",(e) => underLineMove(e)))
+    
 function underLineMove(e){
+
     underLine.style.left = e.currentTarget.offsetLeft + "px"
     underLine.style.width = e.currentTarget.offsetWidth + "px"
     underLine.style.top = e.currentTarget.offsetTop + e.currentTarget.offsetHeight +  (-1) +"px"
