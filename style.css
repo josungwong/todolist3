@@ -95,21 +95,31 @@ body{
 .bor{
     border: 1px solid #c6c6c6;
 }
-@media screen and (max-width: 72rem) {
+@media screen and (max-width: 48rem) {
     .container{
+        margin-top: 4em;
         background-color: #fff;
         min-height: 100vh;
-        max-width: 60vw;
     }
     .button img{
-        width: 4vw;
-        height: 4vw;
+        width: 6vw;
+        height: 6vw;
     }
     .task-tabs div{
-        font-size: 120%;
+        font-size: 110%;
     }
     .text-size{
-        font-size: 120%;
+        font-size: 110%;
     }
-    
+    #task-input{
+        width: 60vw;
+    }
+    #allD{
+        margin: 0;
+        size: 20%;
+        display: inline;
+    }
+    #add-button{
+        display: none;
+    }
 }
